@@ -86,6 +86,44 @@ export default {
 @tailwind utilities;
 ```
 
+3.The current version of Vite splits TypeScript configuration into three files, two of which need to be edited. Add the baseUrl and paths properties to the compilerOptions section of the `tsconfig.json` and  `tsconfig.app.json` files:
+```bash
+{
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}
+```
+
+4. Edit tsconfig.app.json file
+Add the following code to the `tsconfig.app.json` file to resolve paths, for your IDE:
+```bash
+{
+  "compilerOptions": {
+    // ...
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    }
+    // ...
+  }
+}
+
+```
 ## Step 5: Install and configure shadcn/ui
 
 1. Run the shadcn/ui init command:
@@ -108,30 +146,14 @@ npx shadcn@latest init
 9. Are you using React Server Components? `No`
 
 
-
-
-
-## Step 6: Update tsconfig.json
-
-1. Open `tsconfig.json` and add the following to the `compilerOptions` object:
-
-
-```json
-{
-  "compilerOptions": {
-    // ... existing options
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./src/*"]
-    }
-  }
-}
-```
-
-## Step 7: Update vite.config.ts
+## Step 6: Update vite.config.ts
 
 1. Open `vite.config.ts` and update it to include path resolution:
 
+```bash
+# (so you can import "path" without error)
+npm i -D @types/node
+```
 
 ```typescript
 import path from "path"
@@ -146,12 +168,16 @@ export default defineConfig({
     },
   },
 })
+
 ```
 
-## Step 8: Create a sample component using shadcn/ui
+## Step 7: Create a sample component using shadcn/ui
 
 1. Install the Button component:
 
+```bash
+npx shadcn@latest init
+```
 
 ```shellscript
 npx shadcn@latest add button
@@ -190,7 +216,7 @@ function App() {
 export default App
 ```
 
-## Step 9: Run the development server
+## Step 8: Run the development server
 
 Start your development server:
 
