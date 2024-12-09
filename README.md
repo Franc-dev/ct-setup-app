@@ -175,9 +175,6 @@ export default defineConfig({
 
 1. Install the Button component:
 
-```bash
-npx shadcn@latest init
-```
 
 ```shellscript
 npx shadcn@latest add button
