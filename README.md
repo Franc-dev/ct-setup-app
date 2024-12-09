@@ -1,4 +1,4 @@
-```markdown
+
 # Complete Setup Guide: React + Vite + shadcn/ui + Tailwind CSS + TypeScript
 
 This guide provides a detailed, step-by-step process to set up a new project using React, Vite, shadcn/ui, Tailwind CSS, and TypeScript. Follow these instructions carefully to create a powerful, modern web development environment.
